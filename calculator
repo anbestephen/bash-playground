@@ -16,17 +16,18 @@ show_usage(){
   Performs mathematical operation to the two numerical
   parameters provided.
  Where:
-  OPERATION is one of: { add | subtract | divide | multiply }
-   add - add two numbers
-   subtract - subtract two numbers
-   divide - divide two numbers
-   multiply - multiply two numbers
-  Examples:
+   OPERATION is one of: { add | subtract | divide | multiply }
+     add - add two numbers
+     subtract - subtract two numbers
+     divide - divide two numbers
+     multiply - multiply two numbers
+   OPT1 - first numberic parameter
+   OPT2 - second numeric parameter
+ Examples:
     $0 add 12 34
     $0 subtract 12 10
     $0 multiply 5 5
-    $0 divide 20 5
-"
+    $0 divide 20 4 "
 }
 
 #########################################################
