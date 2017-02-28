@@ -1,0 +1,126 @@
+#!/bin/bash
+# a script to perform four mathematical operations
+myCMD="$0"
+
+####################################################
+# Displays usage instruction
+# Globals:
+#   None
+# Arguments:
+#   None
+# Returns:
+#   None
+###################################################
+show_usage(){
+  echo "Usage: $myCMD OPERATION OPT1  OPT2
+  Performs mathematical operation to the two numerical
+  parameters provided.
+ Where:
+  OPERATION is one of: { add | subtract | divide | multiply }
+   add - add two numbers
+   subtract - subtract two numbers
+   divide - divide two numbers
+   multiply - multiply two numbers
+  Examples:
+    $0 add 12 34
+    $0 subtract 12 10
+    $0 multiply 5 5
+    $0 divide 20 5
+"
+}
+
+#########################################################
+# Checks if sufficient command line params are supplied
+# Globals:
+#  None
+# Arguments:
+#  None
+# Returns:
+#  None
+#########################################################
+parse_command_line(){
+  if [ $# -ne 3 ]; then
+      echo "ERROR: Needs three arguments!"
+      show_usage
+      exit 2
+  fi
+}
+
+#######################################################
+# Add two numbers
+# Globals:
+#   None
+# Argumants:
+#   $1 - first number
+#   $2 - second number
+# Returns:
+#   $result - the sum of first number and second number
+#######################################################
+add(){
+  local sum=`expr $1 + $2`
+  return $sum
+}
+
+######################################################
+# Subtract two numbers
+# Globals:
+#   None
+# Arguments:
+#   None
+# Returns:
+#   None
+######################################################
+subtract(){
+  local result=`expr $1 - $2`
+  return $result
+}
+
+######################################################
+# Multiply two numbers
+# Globals:
+#   None
+# Arguments:
+#   None
+# Returns:
+#   None
+##############################################\########
+multiply(){
+  local result=`expr $1 \*  $2`
+  return $result
+}
+
+######################################################
+# Divide two numbers
+# Globals:
+#   None
+# Arguments:
+#   None
+# Returns:
+#   None
+######################################################
+divide(){
+  local result=`expr $1 / $2`
+  return $result
+}
+
+parse_command_line $*
+
+
+case $1 in
+  add)
+    add $2 $3
+    echo "Sum of $2 and $3 is $?"
+    ;;
+  subtract)
+    subtract $2 $3
+    echo "Difference of $2 and $3 is $?"
+    ;;
+  multiply)
+    multiply $2 $3
+    echo "Multiple of $2 and $3 is $?"
+    ;;
+  divide)
+    divide $2 $3
+    echo "Division of $2 and $3 is $?"
+    ;;
+esac
