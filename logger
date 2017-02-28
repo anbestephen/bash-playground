@@ -1,6 +1,50 @@
 #!/bin/bash
 # A file with different log levels
 
+
+####################################################
+# Displays usage instruction
+# Globals:
+#   None
+# Arguments:
+#   None
+# Returns:
+#   None
+###################################################
+show_usage(){
+  echo "Usage: $0 LOGLEVEL MESSAGE
+  Displayes logs with diffent levels
+ Where:
+   LOGLEVEL is one of: { info | debug | warn | error }
+     info  - information log
+     warn  - warning log
+     debug - debug message
+     error - error message
+   MESSAGE - log message
+ Examples:
+    $0 info "information message"
+    $0 warn "Something is not perfect"
+    $0 debug "operation details"
+    $0 error "Something goes wrong"
+}
+
+#########################################################
+# Checks if sufficient command line params are supplied
+# Globals:
+#  None
+# Arguments:
+#  None
+# Returns:
+#  None
+#########################################################
+parse_command_line(){
+  if [ $# -ne 2 ]; then
+      echo "ERROR: Needs three arguments!"
+      show_usage
+      exit 2
+  fi
+}
+
 ########################################################
 # Print error message
 # Globals:
@@ -52,6 +96,8 @@ info(){
 debug(){
   echo "DEBUG - [$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
 }
+
+parse_command_line
 
 case $1 in
   info)  info  $2;;
