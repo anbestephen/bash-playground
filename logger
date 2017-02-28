@@ -1,7 +1,6 @@
 #!/bin/bash
 # A file with different log levels
 
-
 ####################################################
 # Displays usage instruction
 # Globals:
