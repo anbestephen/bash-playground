@@ -1,0 +1,61 @@
+#!/bin/bash
+# A file with different log levels
+
+########################################################
+# Print error message
+# Globals:
+#   None
+# Arguments:
+#   error message
+# Returns:
+#   None
+########################################################
+error() {
+  echo "ERROR - [$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+}
+
+########################################################
+# Print warning message
+# Globals:
+#   None
+# Arguments:
+#   warning message
+# Returns:
+#   None
+########################################################
+warn(){
+  echo "WARN  - [$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+}
+
+########################################################
+# Print information message
+# Globals:
+#   None
+# Arguments:
+#   info message
+# Returns:
+#   None
+########################################################
+info(){
+  echo "INFO  - [$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+}
+
+########################################################
+# Print debugg message
+# Globals:
+#   None
+# Arguments:
+#   debug message
+# Returns:
+#   None
+########################################################
+debug(){
+  echo "DEBUG - [$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+}
+
+case $1 in
+  info)  info  $2;;
+  debug) debug $2;;
+  warn)  warn  $2;;
+  error) error $2;;
+esac
