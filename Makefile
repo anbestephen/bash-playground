@@ -1,10 +1,13 @@
 # a demo Makefile with some targets
+# these targetes were tested to work on Ubuntu 16.04.1 LTS box
+
 all: getOSInfo getUserInfo getDiskInfo
 .PHONY: all
 
 getOSInfo:
-        @uname -a
+        @lsb_release -a
 getUserInfo:
-        @whoami
+        @who -H
 getDiskInfo:
-        @df
+        @sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+
