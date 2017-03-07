@@ -11,3 +11,5 @@ getUserInfo:
         @who -H
 getDiskInfo:
         @sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+getCPUInfo:
+        @lscpu
